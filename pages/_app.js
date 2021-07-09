@@ -1,7 +1,17 @@
-import '../styles/globals.css'
+import App from "next/app";
+//es similr aL app.jsa de create-react-app
+import firebase, { FirebaseContext } from "../firebase";
 
-function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
-}
+const Myapp = props => {
 
-export default MyApp
+  const {Component, pageProps} = props;
+
+  return (<FirebaseContext.Provider
+  value={{ firebase }}
+  >
+    <Component {...pageProps} />
+  </FirebaseContext.Provider>);
+};
+
+export default Myapp;
+

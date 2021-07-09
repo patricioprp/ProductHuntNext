@@ -15,7 +15,7 @@ const useValidacion = (stateInicial,validar,fn) => {
             }
             guardarSubmitForm(false);
         }
-    },[]);
+    },[errores]);
     //todas estas funciones estaban en un componente pero ahora estan en el hook para reutilizarlas
 //Funcion que se ejecuta conforme el usuario escribe algo
 const handleChange = e => {
@@ -29,14 +29,21 @@ const handleSubmit = e => {
     e.preventDefault();
     const erroresValidacion = validar(valores);
     guardarErrores(erroresValidacion);
-    submitForm(true);
+    guardarSubmitForm(true);
+}
+
+//Cuando se realiza el evento de Blur, cuando el usuario esta escribiendo y sale del elemento
+const handleBlur = () =>{
+    const erroresValidacion = validar(valores);
+    guardarErrores(erroresValidacion);
+    guardarSubmitForm(true);
 }
     return {
         valores,
         errores,
-        submitForm,
         handleChange,
-        handleSubmit
+        handleSubmit,
+        handleBlur
     };
 }
  
