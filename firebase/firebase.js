@@ -21,7 +21,15 @@ class Firebase {
         })
     }
 
+    //Inicia sesion del usuario
+    async login(email,password) {
+        return this.auth.signInWithEmailAndPassword(email,password);
+    }
 
+    //Cierra la session
+    async cerrarSesion() {
+        await this.auth.signOut();
+    }
 
 }
 
