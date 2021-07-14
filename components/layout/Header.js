@@ -31,7 +31,7 @@ const Logo = styled.a`
 const Header = () => {
 
   const {usuario, firebase }= useContext(FirebaseContext);
-  console.log(usuario,'login');
+  // console.log(usuario,'login');
   return (
     <header
       css={css`

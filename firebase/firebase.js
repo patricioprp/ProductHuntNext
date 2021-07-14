@@ -1,5 +1,7 @@
 import app from "firebase/app";
-import 'firebase/auth'
+import 'firebase/auth';
+import 'firebase/firestore';
+import 'firebase/storage'
 
 import firebaseConfig from "./config";
 //escribimos una clase para que cuando cree una nueva instanacia de firebase se inicialize la app
@@ -11,6 +13,8 @@ class Firebase {
     app.initializeApp(firebaseConfig);
     }
     this.auth = app.auth();
+    this.db = app.firestore();
+    this.storage = app.storage();
 }
     // Registra un usuario
     async registrar(nombre, email, password) {
